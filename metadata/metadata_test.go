@@ -7,14 +7,14 @@ import (
 )
 
 func TestMetadata(t *testing.T) {
-	t.Run("NewMetadata", func(t *testing.T) {
-		metadata := NewMetadata("https://169254.now.sh")
+	t.Run("New", func(t *testing.T) {
+		metadata := New("https://169254.now.sh")
 
 		assert.Equal(t, metadata.Endpoint, "https://169254.now.sh")
 	})
 
 	t.Run("Get", func(t *testing.T) {
-		metadata := NewMetadata("https://169254.now.sh")
+		metadata := New("https://169254.now.sh")
 
 		ami, err := metadata.Get("ami-id")
 		assert.NoError(t, err)

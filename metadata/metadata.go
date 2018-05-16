@@ -13,20 +13,19 @@ type Metadata struct {
 	ResourceMap map[string]string
 }
 
-func NewMetadata(endpoint string) *Metadata {
+func New(endpoint string) *Metadata {
 	resourceMap := make(map[string]string)
 	resourceMap["ami-id"] = "latest/meta-data/ami-id"
 	resourceMap["ami-launch-index"] = "latest/meta-data/ami-launch-index"
+	resourceMap["availability-zone"] = "latest/meta-data/placement/availability-zone"
+	resourceMap["hostname"] = "latest/meta-data/hostname"
 	resourceMap["instance-id"] = "latest/meta-data/instance-id"
 	resourceMap["instance-type"] = "latest/meta-data/instance-type"
-	resourceMap["availability-zone"] = "latest/meta-data/placement/availability-zone"
-	resourceMap["az"] = "latest/meta-data/placement/availability-zone"
-	resourceMap["profile"] = "latest/meta-data/profile"
-	resourceMap["hostname"] = "latest/meta-data/hostname"
-	resourceMap["local-ipv4"] = "latest/meta-data/local-ipv4"
-	resourceMap["public-ipv4"] = "latest/meta-data/public-ipv4"
 	resourceMap["local-hostname"] = "latest/meta-data/local-hostname"
+	resourceMap["local-ipv4"] = "latest/meta-data/local-ipv4"
+	resourceMap["profile"] = "latest/meta-data/profile"
 	resourceMap["public-hostname"] = "latest/meta-data/public-hostname"
+	resourceMap["public-ipv4"] = "latest/meta-data/public-ipv4"
 
 	client := &http.Client{
 		Timeout: time.Second * 30,
