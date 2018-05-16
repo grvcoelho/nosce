@@ -49,13 +49,17 @@ func (m *Metadata) Get(key string) (string, error) {
 	defer res.Body.Close()
 
 	if err != nil {
-		return "", fmt.Errorf("could not get value for key %s: %v", key, err)
+		return "", fmt.Errorf("key %s could not be found", key)
+	}
+
+	if res.StatusCode != 200 {
+		return "", fmt.Errorf("key %s could not be found", key)
 	}
 
 	body, err := ioutil.ReadAll(res.Body)
 
 	if err != nil {
-		return "", fmt.Errorf("could not parse value for key %s: %v", key, err)
+		return "", fmt.Errorf("key %s could not be found", key)
 	}
 
 	return string(body), nil
