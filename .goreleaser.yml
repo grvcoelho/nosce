@@ -1,0 +1,8 @@
+builds:
+  - binary: nosce
+    goos:
+      - windows
+      - darwin
+      - linux
+    goarch:
+      - amd64
