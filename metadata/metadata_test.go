@@ -23,5 +23,9 @@ func TestMetadata(t *testing.T) {
 		az, err := metadata.Get("availability-zone")
 		assert.NoError(t, err)
 		assert.Equal(t, az, "us-east-1b")
+
+		region, err := metadata.Get("region")
+		assert.NoError(t, err)
+		assert.Equal(t, region, "us-east-1")
 	})
 }
